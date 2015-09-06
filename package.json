@@ -1,0 +1,31 @@
+{
+  "name": "nodejs-persistable-scheduler",
+  "version": "0.0.1",
+  "description": "A nodejs based, persist by mysql, timely and repeatable task framework;",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/easyfan/nodejs-persistable-scheduler.git"
+  },
+  "keywords": [
+    "scheduler",
+    "task",
+    "timer",
+    "repeatable",
+    "persistency",
+    "mysql"
+  ],
+  "author": "Easyfan Zheng <zheng.easyfan@gmail.com> (http://zhengeasyfan.blogspot.com)",
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/easyfan/nodejs-persistable-scheduler/issues"
+  },
+  "homepage": "https://github.com/easyfan/nodejs-persistable-scheduler#readme",
+  "dependencies": {
+    "mysql": "^2.9.0",
+    "q": "^1.4.1"
+  }
+}
