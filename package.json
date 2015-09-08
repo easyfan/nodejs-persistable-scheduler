@@ -27,5 +27,8 @@
   "dependencies": {
     "mysql": "^2.9.0",
     "q": "^1.4.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }

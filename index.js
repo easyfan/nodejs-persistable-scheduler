@@ -71,17 +71,19 @@ module.exports = {
 			if (config.methods && config.methods instanceof Array && config.methods.length > 0)
 			{
 				config.methods.forEach(function(method) {
-					if (!taskMethods.registerMethod(method.name,method.func))
+					if (!taskMethods.registerMethod(method.func,method.name))
 						throw ERR_ILLEGAL_FUNC_NAME.replace('$name',method.name);
 				});
 			}
 			else
 				throw ERR_ILLEGAL_FUNC;
+
+			queryAdapter.initialize(config.db);
+
 			if (config.scheduler && typeof(config.scheduler) == "object" )
 			{
 				taskUtil.initialize(config.scheduler);
 			}
-			queryAdapter.initialize(config.db);
 			initialized = true;
 		}
 		else
@@ -114,6 +116,7 @@ module.exports = {
 	************************************************************************************************************/
 	registerTask: function(frequency,firstDate,methodName,param,intervalTime) {
 		initializeCheck();
+		//console.log(frequency+firstDate+methodName+param+intervalTime);
 		return taskUtil.registerTask(frequency,firstDate,methodName,param,intervalTime);
 	},
 	/***********************************************************************************************************
