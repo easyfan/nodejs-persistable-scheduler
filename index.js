@@ -191,12 +191,14 @@ module.exports = {
 	**   @param:			{String} frequency: Execute frequency for the task, acceptable value set 
 	**						["none","fixinterval","annually","semiannually","seasonly","monthly","semimonthly",
 	**						"weekly","semiweekly","daily","semidaily","hourly","halfhourly"];
+	**   @param:			{Number} intervalTime: In MS. If the execute frequency selected as "fixinterval", 
+							this value will be used as the time interval between executions;
 	**   @return:			{Q.promise}: return true if succeed;
 	**
 	************************************************************************************************************/
-	changeFrequency: function(taskID,frequency) {
+	changeFrequency: function(taskID,frequency,intervalTime) {
 		initializeCheck();
-		return taskUtil.changeFrequency(taskID,frequency);
+		return taskUtil.changeFrequency(taskID,frequency,intervalTime);
 	}
 };
 
