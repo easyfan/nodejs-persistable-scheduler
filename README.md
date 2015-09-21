@@ -28,7 +28,78 @@ Which is responsible to recording the initialization/maintainess task status int
 
 
 ## Best Prectice:
-### 
+### 1. How to initial/startup:  
+```js
+var scheduler = require('nodejs-persistable-scheduler');
+var q = require('q');
+var methodArr = [];
+/***************************
+ ***************************
+  DONT CHANGE THE ORDER of mehtodArr!!!!
+  JUST PUSH THE NEW ADDED ONES AT THE TAIL!!!
+  **************************
+  **************************/
+method1 = function(param) {
+  var defer = Q.defer();
+  //functional codes for method1...
+  return defer.promise;
+};
+
+methodArr.push({name:'METHOD1',method1});
+
+method2 = function(param) {
+  var defer = Q.defer();
+  //functional codes for method2...
+  return defer.promise;
+};
+methodArr.push({name:'METHOD2',method2});
+
+initialTask = function() {
+  var defer = Q.defer();
+  var AM = new Date();
+  AM.setHours(12,0,0);
+  scheduler.registerTask("daily",AM,'METHOD1',null,null).then(function(ID) {
+    if (ID)
+    {
+      defer.resolve(true);
+    }
+  },function(err) {
+    defer.reject(err);
+  });
+  return defer.promise;
+};
+
+var schedulerConfig = {
+  initFunc: initialTask, 
+  scanInterval: 24*60*60*1000//scan interval time, in MS
+};
+
+var initialConfig = {
+  db:
+  {
+    host: '<DB_ADDRESS>',
+    user: '<DB_ADMIN_NAME>',
+    password: '<DB_ADMIN_PASSWORD>',
+    database:'<DB_NAME>',
+    port: <DB_PORT>
+  },//DB config
+  methods:methodArr,
+  scheduler:schedulerConfig
+};
+
+scheduler.initialize(initialConfig);
+```  
+**Caution that:**  
+1. Please keep available of the DB naming 'fixtimetask' and 'scanrecord' for module 'nodejs-persistable-scheduler';  
+2. Inside one NODEJS instance, or multiple NODEJS instances that sharing a same DB, only 1 'nodejs-persistable-scheduler' instance allowed.  
+3. For different NODEJS instances that are not sharing a same DB, there could be multiple 'nodejs-persistable-scheduler' instances.  
+
+**Tips:**  
+If you want to re-initial the whole 'nodejs-persistable-scheduler' module (run the customized initialization module more than once), you can clean up the record in DB table 'scanrecord' with recordType equals to 0;  
+
+### 2. How to use task component:  
+Refer the comments inside '(nodejs-persistable-scheduler/index.js)[]' please;
+
 ## Tests:
 
 ## Contributing:
