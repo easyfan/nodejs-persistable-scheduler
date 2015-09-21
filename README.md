@@ -98,10 +98,11 @@ scheduler.initialize(initialConfig);
 If you want to re-initial the whole 'nodejs-persistable-scheduler' module (run the customized initialization module more than once), you can clean up the record in DB table 'scanrecord' with recordType equals to 0;  
 
 ### 2. How to use task component:  
-Refer the comments inside '(nodejs-persistable-scheduler/index.js)[]' please;
+Refer the comments inside [nodejs-persistable-scheduler/index.js](https://github.com/easyfan/nodejs-persistable-scheduler/blob/master/index.js) please;
 
 ## Tests:
 
-## Contributing:
+## Contributors:
+* [Easyfan Zheng](mailto://zheng.easyfan@gmail.com)  
 
 ## Release History:
