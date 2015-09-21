@@ -1,6 +1,6 @@
 {
   "name": "nodejs-persistable-scheduler",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A nodejs based, persist by mysql, timely and repeatable task framework;",
   "main": "index.js",
   "scripts": {
