@@ -106,3 +106,4 @@ Refer the comments inside [nodejs-persistable-scheduler/index.js](https://github
 * [Easyfan Zheng](mailto://zheng.easyfan@gmail.com)  
 
 ## Release History:
+1. 2015-09-21: V1.0 published;
